@@ -4,9 +4,13 @@
 <p>For compiler you need to start Makefile</p>
 
 ```
- make all
+ make
 ```
+<p>if you want build debug version use: </p>
 
+```
+    make debug
+```
 <h2>Started app</h2>
 <p>For started server you need enter port what you want listen</p>
 
