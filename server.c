@@ -8,8 +8,8 @@
 int main(int argc, char *argv[])
 {
 	if (argc != 2) {
-		perror("Invalid number of arguments");
-		exit(EXIT_FAILURE);
+		perror("Invalid number of arguments\n");
+		return -1;
 	}
 	int port = atoi(argv[1]);
 	int server = Socket(AF_INET, SOCK_STREAM, 0);
@@ -23,12 +23,10 @@ int main(int argc, char *argv[])
     socklen_t adrlen = sizeof(adr);
 
     int fd = Accept(server, (struct sockaddr *)&adr, &adrlen);
-
-
 	char buf[256];
 	ssize_t nread = read(fd, buf, 256);
 	if (nread == -1) {
-		perror("read failed");
+		perror("read failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -44,5 +42,5 @@ int main(int argc, char *argv[])
     close(fd);
     close(server);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
