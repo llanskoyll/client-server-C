@@ -1,12 +1,27 @@
-all: release
+#defines
+COMPILE=gcc
+CFLAGS=-W -Wall -Werror -std=c99
+SERVER=server
+CLIENT=client
+
+#path to client-server dirs
+PROJECT_ROOT=$(shell pwd)
+PREF_SERVER=$(PROJECT_ROOT)/server_d/
+PREF_CLIENT=$(PROJECT_ROOT)/client_d/
+
+#source server-client
+SRC_SERVER=$(wildcard $(PREF_SERVER)*.c)
+SRC_CLIENT=$(wildcard $(PREF_CLIENT)*.c)
+
+all: debug
 
 release:
-	gcc server.c erproc.c -W -Wall -Werror -std=c99 -o server
-	gcc client.c erproc.c -W -Wall -Werror -std=c99 -o client
+	$(COMPILE) $(SRC_SERVER) $(CFLAGS) -o $(SERVER)
+	$(COMPILE) $(SRC_CLIENT) $(CFLAGS) -o $(CLIENT)
 
 debug:
-	gcc -g server.c erproc.c -W -Wall -Werror -std=c99 -o server
-	gcc -g client.c erproc.c -W -Wall -Werror -std=c99 -o client
+	$(COMPILE) -g $(SRC_SERVER) $(CFLAGS) -o $(SERVER)
+	$(COMPILE) -g $(SRC_CLIENT) $(CFLAGS) -o $(CLIENT)
 
 clean:
-	rm -rf server client
+	rm -rf $(SERVER) $(CLIENT)

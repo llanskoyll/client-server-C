@@ -4,12 +4,12 @@
 <p>For compiler you need to start Makefile</p>
 
 ```
- make
+ make release
 ```
 <p>if you want build debug version use: </p>
 
 ```
-    make debug
+    make
 ```
 <h2>Started app</h2>
 <p>For started server you need enter port what you want listen</p>
