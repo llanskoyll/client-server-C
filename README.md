@@ -9,7 +9,7 @@
 <p>if you want build debug version use: </p>
 
 ```
-    make
+make
 ```
 <h2>Started app</h2>
 <p>For started server you need enter port what you want listen</p>
@@ -20,5 +20,5 @@
 <p>For started client you need enter port what you want read</p> 
 
 ```
-./client 34543
+./client 34543 192.168.1.100
 ```
