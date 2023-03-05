@@ -6,23 +6,31 @@
 
 #include "erproc.h"
 
+void argument_comline(char *argv[], char *ip_addr, int *port_addr)
+{
+    *port_addr = atoi(argv[1]);
+    strcpy(ip_addr, argv[2]);
+}
+
 int main(int argc, char *argv[])
 {
-	if (argc != 2) {
+    if (argc != 3) {
 		perror("Invalid number of arguments");
 		exit(EXIT_FAILURE);
 	}
 
-	int port = atoi(argv[1]);
+    int port_addr;
+    char *ip_addr = malloc(sizeof(char) * (strlen(argv[2]) + 1));
+    argument_comline(argv, ip_addr, &port_addr);
 
 	int fd = Socket(AF_INET, SOCK_STREAM, 0);
 
 	struct sockaddr_in adr = { 0 };
 	adr.sin_family = AF_INET;
-	adr.sin_port = htons(port);
-	Inet_pton(AF_INET, "192.168.1.138", &adr.sin_addr);
+	adr.sin_port = htons(port_addr);
+	Inet_pton(AF_INET, ip_addr, &adr.sin_addr);
 	Connect(fd, (struct sockaddr *)&adr, sizeof(adr));
-	write(fd, "You'r pidor\n", sizeof("You'r pidor\n"));
+	write(fd, "Text\n", sizeof("Text\n"));
 
     char buf[256];
     ssize_t nread;
