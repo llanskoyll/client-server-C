@@ -1,16 +1,11 @@
 <h1>Based client-server application</h1>
 
-<h2>Compile server</h2>
+<h2>Compile</h2>
+<p>For compiler you need to start Makefile</p>
 
 ```
- gcc server.c erproc.c -W -Wall -Werror -std=c99 -o server
+ make all
 ```
-
-<h2>Compile client</h2>
-
-```
- gcc server.c erproc.c -W -Wall -Werror -std=c99 -o server
- ```
 
 <h2>Started app</h2>
 <p>For started server you need enter port what you want listen</p>
